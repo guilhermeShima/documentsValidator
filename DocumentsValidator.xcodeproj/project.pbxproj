@@ -16,6 +16,9 @@
 		42DA499A24EABF6000C250CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DA499824EABF6000C250CE /* Main.storyboard */; };
 		42DA499C24EABF6400C250CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DA499B24EABF6400C250CE /* Assets.xcassets */; };
 		42DA499F24EABF6400C250CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42DA499D24EABF6400C250CE /* LaunchScreen.storyboard */; };
+		42DA49A524EAC5B300C250CE /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA49A424EAC5B300C250CE /* Validator.swift */; };
+		42DA49A724EACE8700C250CE /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA49A624EACE8700C250CE /* String+Extensions.swift */; };
+		42DA49A924EACF5B00C250CE /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA49A824EACF5B00C250CE /* StringExtensionsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,9 @@
 		42DA499B24EABF6400C250CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42DA499E24EABF6400C250CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42DA49A024EABF6400C250CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42DA49A424EAC5B300C250CE /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		42DA49A624EACE8700C250CE /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		42DA49A824EACF5B00C250CE /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,8 @@
 			children = (
 				42DA497524EABE7500C250CE /* DocumentsValidator.h */,
 				42DA497624EABE7500C250CE /* Info.plist */,
+				42DA49A424EAC5B300C250CE /* Validator.swift */,
+				42DA49A624EACE8700C250CE /* String+Extensions.swift */,
 			);
 			path = DocumentsValidator;
 			sourceTree = "<group>";
@@ -105,6 +113,7 @@
 			children = (
 				42DA498024EABE7500C250CE /* DocumentsValidatorTests.swift */,
 				42DA498224EABE7500C250CE /* Info.plist */,
+				42DA49A824EACF5B00C250CE /* StringExtensionsTests.swift */,
 			);
 			path = DocumentsValidatorTests;
 			sourceTree = "<group>";
@@ -202,6 +211,7 @@
 				TargetAttributes = {
 					42DA497124EABE7500C250CE = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 					42DA497A24EABE7500C250CE = {
 						CreatedOnToolsVersion = 11.5;
@@ -263,6 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42DA49A724EACE8700C250CE /* String+Extensions.swift in Sources */,
+				42DA49A524EAC5B300C250CE /* Validator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42DA49A924EACF5B00C250CE /* StringExtensionsTests.swift in Sources */,
 				42DA498124EABE7500C250CE /* DocumentsValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +450,7 @@
 		42DA498724EABE7500C250CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 57F4G28A83;
@@ -453,6 +467,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = guilhermeShima.DocumentsValidator;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -461,6 +476,7 @@
 		42DA498824EABE7500C250CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 57F4G28A83;
@@ -485,6 +501,7 @@
 		42DA498A24EABE7500C250CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 57F4G28A83;
 				INFOPLIST_FILE = DocumentsValidatorTests/Info.plist;
@@ -503,6 +520,7 @@
 		42DA498B24EABE7500C250CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 57F4G28A83;
 				INFOPLIST_FILE = DocumentsValidatorTests/Info.plist;
