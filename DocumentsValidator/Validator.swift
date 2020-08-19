@@ -9,6 +9,8 @@
 import Foundation
 
 public final class Validator {
+    
+    public init() {}
 
     public func validate(cpf: String) -> Bool {
         let cpf = cpf.onlyNumbers()
