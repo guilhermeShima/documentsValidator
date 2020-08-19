@@ -37,4 +37,26 @@ class DocumentsValidatorTests: XCTestCase {
         cpf = "11111111111"
         XCTAssertFalse(sut.validate(cpf: cpf))
     }
+    
+    func testValidCpnj() {
+        var cnpj = "25.559.813/0001-47"
+        XCTAssertTrue(sut.validate(cnpj: cnpj))
+        
+        cnpj = "59541264000103"
+        XCTAssertTrue(sut.validate(cnpj: cnpj))
+    }
+    
+    func testInvalidCpnj() {
+        var cnpj = "11.111.111/1111-"
+        XCTAssertFalse(sut.validate(cnpj: cnpj))
+        
+        cnpj = ""
+        XCTAssertFalse(sut.validate(cnpj: cnpj))
+        
+        cnpj = "25.559.813/0001-42"
+        XCTAssertFalse(sut.validate(cnpj: cnpj))
+        
+        cnpj = "11.111.111/1111-11"
+        XCTAssertFalse(sut.validate(cnpj: cnpj))
+    }
 }

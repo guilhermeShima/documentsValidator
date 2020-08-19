@@ -20,20 +20,13 @@ public final class Validator {
 
         let i1 = cpf.index(cpf.startIndex, offsetBy: 9)
         let i2 = cpf.index(cpf.startIndex, offsetBy: 10)
-        let i3 = cpf.index(cpf.startIndex, offsetBy: 11)
-        let d1 = Int(cpf[i1..<i2])
-        let d2 = Int(cpf[i2..<i3])
+
+        let d1 = cpf[i1].wholeNumberValue
+        let d2 = cpf[i2].wholeNumberValue
 
         var temp1 = 0, temp2 = 0
-
-        for i in 0...8 {
-            let start = cpf.index(cpf.startIndex, offsetBy: i)
-            let end = cpf.index(cpf.startIndex, offsetBy: i+1)
-            let char = Int(cpf[start..<end])
-
-            temp1 += char! * (10 - i)
-            temp2 += char! * (11 - i)
-        }
+        temp1 = cpfDigit(slice: cpf.prefix(9), initialMult: 10)
+        temp2 = cpfDigit(slice: cpf.prefix(9), initialMult: 11)
 
         temp1 %= 11
         temp1 = temp1 < 2 ? 0 : 11-temp1
@@ -43,5 +36,49 @@ public final class Validator {
         temp2 = temp2 < 2 ? 0 : 11-temp2
 
         return temp1 == d1 && temp2 == d2
+    }
+    
+    private func cpfDigit(slice: Substring, initialMult: Int) -> Int {
+        var i = 0
+        let digit = slice.reduce(into: 0) {
+            let charValue = ($1.wholeNumberValue ?? 0)
+            let value = charValue * (initialMult - i)
+            i += 1
+            $0 += value
+        }
+        return digit
+    }
+
+    public func validate(cnpj: String) -> Bool {
+        let cnpj = cnpj.onlyNumbers()
+        let numberValues = cnpj.compactMap{ (char: Character) -> Int? in
+            return char.wholeNumberValue
+        }
+
+        guard cnpj.count == 14 && Set(numberValues).count != 1 else { return false }
+        
+        let d1 = numberValues[12]
+        let d2 = numberValues[13]
+        
+        var temp1 = cnpjDigit(slice: numberValues.prefix(12))
+        temp1 %= 11
+        temp1 = temp1 < 2 ? 0 : 11-temp1
+        
+        var temp2 = cnpjDigit(slice: numberValues.prefix(13))
+        temp2 %= 11
+        temp2 = temp2 < 2 ? 0 : 11-temp2
+
+        return d1 == temp1 && d2 == temp2
+    }
+    
+    private func cnpjDigit(slice: ArraySlice<Int>) -> Int {
+        var i = 2
+        let digit = slice.reversed().reduce(into: 0) {
+            let value = $1 * i
+            i += 1
+            i = i == 10 ? 2 : i
+            $0 += value
+        }
+        return digit
     }
 }
