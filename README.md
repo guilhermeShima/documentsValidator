@@ -1,3 +1,3 @@
-# documentsValidator
+# DocumentsValidator
 
-Project to validate brazilian's documents. Such as CPF and CNPJ.
+A CocoaPods library  to validate brazilian's documents, such as CPF and CNPJ.
