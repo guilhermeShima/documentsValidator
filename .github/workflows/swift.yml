@@ -6,14 +6,15 @@ on:
   pull_request:
     branches: [ master, develop ]
 
-jobs:
-  build:
-
+jobs:    
+  test:
+    name: Test
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Bundle Install
+      run: bundle install
+    - name: Unit tests
+      run: bundle exec fastlane tests
